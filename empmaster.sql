@@ -5,28 +5,30 @@ CREATE DATABASE emp_directory;
 USE emp_directory;
 
 CREATE TABLE department(
-   ID int NOT NULL AUTO_INCREMENT,
+   id INT NOT NULL AUTO_INCREMENT,
    dept_name VARCHAR(30) NOT NULL,
    PRIMARY KEY(id)
 );
 
+
+
 CREATE TABLE emp_role(
-   ID int NOT NULL AUTO_INCREMENT,
+   id INT NOT NULL AUTO_INCREMENT,
    title VARCHAR(30) NOT NULL,
    salary DECIMAL(8,2) NOT NULL,
-   dept_id int NOT NULL,
+   dept_id INT NOT NULL,
    PRIMARY KEY(id)
 );
 
-
-CREATE TABLE employee(
-   ID int NOT NULL AUTO_INCREMENT,
-   first_name VARCHAR(30) NOT NULL,
-   last_name VARCHAR(30) NOT NULL,
-   role_id int NOT NULL
-   manager_id int NULL,
-   PRIMARY KEY(id)
+CREATE TABLE employees (
+  id int NOT NULL,
+  first_name varchar(30) NOT NULL,
+  last_name varchar(30) NOT NULL,
+  role_id int NOT NULL,
+  manager_id varchar(30) NOT NULL,
+  PRIMARY KEY (id)
 );
+
 
 INSERT INTO department (dept_name) values ("IT", "Human Resources", "Marketing", "Legal","Operations");
 
@@ -44,7 +46,7 @@ INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES ("Bola"
 INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES ("Kiki", "Drake", 1, 3);
 INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES ("Lebron", "James", 2, 3);
 
--- SELECT first_name, last_name, dept_name, salary, title
+-- SELECT first_name, last_name, dept_id, salary, title
 -- FROM emp_role
 -- INNER JOIN employee
 -- ON emp_role.id = employee.role_id
