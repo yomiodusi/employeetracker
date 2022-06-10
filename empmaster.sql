@@ -46,7 +46,4 @@ INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES ("Bola"
 INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES ("Kiki", "Drake", 1, 3);
 INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES ("Lebron", "James", 2, 3);
 
--- SELECT first_name, last_name, dept_id, salary, title
--- FROM emp_role
--- INNER JOIN employee
--- ON emp_role.id = employee.role_id
+SELECT * FROM employees
