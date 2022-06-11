@@ -15,7 +15,6 @@ connection.connect((err) => {
     if(err){
         throw err;
     }
-    console.log(' My Sql Connected...');
 });
 
 console.log ('Welcome to our Employee Tracker.')
@@ -24,7 +23,7 @@ console.log ('Welcome to our Employee Tracker.')
 function init() {
     inquirer
         .prompt({
-            name: "action",
+            name: "options",
             type: "list",
             message: "What would you like to do?",
             choices: [
@@ -34,12 +33,11 @@ function init() {
                 "Add a role", 
                 "Add an Employee", 
                 "Update an Employee Role",
-                "exit"
+                "Exit"
             ]
         })
-        .then(function(answer) {
-            // console.log("hey!")
-            switch (answer.action) {
+        .then(function(response) {
+            switch (response.options) {
                 case "View All Departments":
                     viewDep();
                     break;
@@ -64,7 +62,7 @@ function init() {
                     updEmp();
                     break;
 
-                case "exit":
+                case "Exit":
                     connection.end();
                     break;
             }

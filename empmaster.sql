@@ -21,29 +21,32 @@ CREATE TABLE emp_role(
 );
 
 CREATE TABLE employees (
-  id int NOT NULL,
+  id int NOT NULL AUTO_INCREMENT,
   first_name varchar(30) NOT NULL,
   last_name varchar(30) NOT NULL,
   role_id int NOT NULL,
-  manager_id varchar(30) NOT NULL,
+  manager_id  int NULL,
   PRIMARY KEY (id)
 );
 
 
-INSERT INTO department (dept_name) values ("IT", "Human Resources", "Marketing", "Legal","Operations");
+INSERT INTO department (dept_name) values ('IT'), ('Human Resources'), ('Marketing'), ('Legal'),('Operations');
 
-INSERT INTO emp_role (title, salary, dept_id) values ("Informatics Director", 90000, 1), ("Enterprise Architect", 55000, 1), ("HR Director", 90000, 2),("DEI Specialist", 55000, 2),
-("Marketing Director", 85000, 3),("Marketing Analyst", 52000, 3),("Chief Legal Officer", 120000, 4),("Legal Analyst", 72000, 4),("Site Operations Head", 80000, 5),("Operations Manager", 60000, 5)
+INSERT INTO emp_role (title, salary, dept_id) values ('Informatics Director', 90000, 1), ('Enterprise Architect', 55000, 1), ('HR Director', 90000, 2),('DEI Specialist', 55000, 2),
+('Marketing Director', 85000, 3),('Marketing Analyst', 52000, 3),('Chief Legal Officer', 120000, 4),('Legal Analyst', 72000, 4),('Site Operations Head', 80000, 5),('Operations Manager', 60000, 5);
 
-INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES ("Akin", "Peter", 1, 3);
-INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES ("Jon", "Jones", 2, 3);
-INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES ("Ricardo", "Kaka", 3, null);
-INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES ("Steph", "Curry", 4, 3);
-INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES ("Alex", "Kobayashi", 1, null);
-INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES ("Michael", "Jordan", 2, 3);
-INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES ("Yemisi", "Odusi", 3, 3);
-INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES ("Bola", "Ososanya", 4, null);
-INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES ("Kiki", "Drake", 1, 3);
-INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES ("Lebron", "James", 2, 3);
+INSERT INTO employees (first_name, last_name, role_id, manager_id) VALUES ('Akin', 'Peter', 1, 3);
+INSERT INTO employees (first_name, last_name, role_id, manager_id) VALUES ('Jon', 'Jones', 2, 3);
+INSERT INTO employees (first_name, last_name, role_id, manager_id) VALUES ('Ricardo', 'Kaka', 3, null);
+INSERT INTO employees (first_name, last_name, role_id, manager_id) VALUES ('Steph', 'Curry', 4, 3);
+INSERT INTO employees (first_name, last_name, role_id, manager_id) VALUES ('Alex', 'Kobayashi', 1, null);
+INSERT INTO employees (first_name, last_name, role_id, manager_id) VALUES ('Michael', 'Jordan', 2, 3);
+INSERT INTO employees (first_name, last_name, role_id, manager_id) VALUES ('Yemisi', 'Odusi', 3, 3);
+INSERT INTO employees (first_name, last_name, role_id, manager_id) VALUES ('Bola', 'Ososanya', 4, null);
+INSERT INTO employees (first_name, last_name, role_id, manager_id) VALUES ('Kiki', 'Drake', 1, 3);
+INSERT INTO employees (first_name, last_name, role_id, manager_id) VALUES ('Lebron', 'James', 2, 3);
 
-SELECT * FROM employees
+SELECT *
+FROM emp_role
+INNER JOIN employees
+ON emp_role.id = employees.role_id
