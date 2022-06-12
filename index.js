@@ -1,6 +1,7 @@
 // const express = require ('express');
 const mysql = require ('mysql2');
 const inquirer = require('inquirer');
+const res = require('express/lib/response');
 
 // Create connection
 
@@ -70,3 +71,29 @@ function init() {
 }
 
 init();
+
+//Viewing All Departments
+function viewDep() {
+    connection.query(` SELECT * FROM emp_directory.department`, (err, res)=>{
+        return console.table(res)
+    })
+    init();
+}
+
+//Viewing All Roles
+function viewRole() {
+    connection.query(` SELECT * FROM emp_directory.emp_role`, (err, res)=>{
+        return console.table(res)
+    })
+    init();
+}
+
+//Viewing All Employees
+function viewEmp() {
+    connection.query(` SELECT * FROM emp_directory.employees`, (err, res)=>{
+        return console.table(res)
+    })
+    init();
+}
+
+
