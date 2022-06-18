@@ -148,11 +148,11 @@ function addRole() {
 function addEmp() {
     inquirer
         .prompt([{
-            name: "firstName",
+            name: "first_name",
             type: "input",
             message: "What is the employee's first name?"
         }, {
-            name: "lastName",
+            name: "last_name",
             type: "input",
             message: "What is the employee's last name?"
         }, {
@@ -162,8 +162,7 @@ function addEmp() {
         }, {
             name: "manager_id",
             type: "input",
-            message: "What is the employees manager's id?",
-
+            message: "What is the employees manager's id?"
         }, ])
         .then(function(response) {
             connection.query(`INSERT INTO employees (first_name,last_name,role_id,manager_id) VALUES (?,?,?,?)`, [response.first_name, response.last_name, response.role_id, response.manager_id], (err, res)=>{
@@ -172,10 +171,9 @@ function addEmp() {
             init();
         })
 }
+
+
 // update employee
-
-
-
 function updEmp() {
     connection.query(` SELECT * FROM emp_directory.employees`, (err, res)=>{
        
@@ -195,13 +193,12 @@ function updEmp() {
     
     ]).then(function(response){
         console.log(response)
-                const id = response['employees'][0]
-                connection.query(`UPDATE employees SET role_id = (?) WHERE id = (?)`,[response.role_id,id], (err,res)=>{
-                    console.table(res)
+                const id = response['employees'].match(/^\d+/)
+                connection.query(`UPDATE employees SET role_id = (?) WHERE id = (?)`,[response.role_id,id[0]], (err,res)=>{
+                    return console.table(res)
                 })
                 
-        })
-        
+        })       
    })
     
         // .then(function(response) 
