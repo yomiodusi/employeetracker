@@ -14,8 +14,8 @@
   * [Project Status](#Status)
 
   ## Visual of Project
-    ![screenshot](/images/myemployees.png)
-    ![screenshot](/images/userprompts.png)
+  ![screenshot](/images/myemployees.png)
+  ![screenshot](/images/userprompts.png)
 
   ## Usage Information
   SQL, Node, Inquirer
