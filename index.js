@@ -65,7 +65,7 @@ function init() {
                     addEmp();
                     break;
 
-                case "Update Employee Role":
+                case "Update an Employee Role":
                     updEmp();
                     break;
 
@@ -172,5 +172,42 @@ function addEmp() {
             init();
         })
 }
+// update employee
 
-//Update an Employee Role
+
+
+function updEmp() {
+    connection.query(` SELECT * FROM emp_directory.employees`, (err, res)=>{
+       
+        inquirer
+        .prompt([{
+            name: "employees",
+            type: "list",
+            message: "Which employee would you like to update?",
+            choices: res.map(e => e.id+ ': '+e.first_name+ ' '+e.last_name+' | Role Id:'+e.role_id)
+        }, 
+        {
+            name: 'role_id',
+            type: 'list',
+            message: 'What new role id would you like to give the selected employee',
+            choices: [1,2,3,4]
+        }
+    
+    ]).then(function(response){
+        console.log(response)
+                const id = response['employees'][0]
+                connection.query(`UPDATE employees SET role_id = (?) WHERE id = (?)`,[response.role_id,id], (err,res)=>{
+                    console.table(res)
+                })
+                
+        })
+        
+   })
+    
+        // .then(function(response) 
+        //     connection.query(`INSERT INTO employees (first_name,last_name,role_id,manager_id) VALUES (?,?,?,?)`, [response.first_name, response.last_name, response.role_id, response.manager_id], (err, res)=>{
+        //         return console.table(res)
+        //     })
+        //     init();
+        // })
+}
